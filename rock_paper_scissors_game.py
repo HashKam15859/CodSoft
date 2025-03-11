@@ -1,8 +1,5 @@
-# 1 - Rock
-# 2 - Paper
-# 3 - Scissors
-
 import random
+import time
 
 # Function to generate a random choice for computer
 def computer():
@@ -11,11 +8,11 @@ def computer():
 # Global variables to keep track of user & comupter scores
 user_score = 0  
 comp_score = 0
-
+rounds = 0
 
 # Function to determine who is the winner based on the user and computer chioces
 def get_winner(user):
-    global user_score, comp_score, score_history 
+    global user_score, comp_score, rounds 
     comp = computer()
     if user == comp:
         if user == 1: 
@@ -50,9 +47,10 @@ def get_winner(user):
 
 # Function to start the game and help the user navigate through the game
 def play_game():
-    global user_score, comp_score
+    global user_score, comp_score, rounds
     print("Welcome to the game of Rock-Paper-Scissors, Player!") 
     while True:
+        print("\n-------------------------------------------")
         print("How would you like to proceed?")
         print("1. Read the Rules \n2. Play the Game \n3. View Scores \n4. Quit the Game")
         choice = int(input("Enter a choice: ")) 
@@ -67,16 +65,18 @@ def play_game():
                 print("1 - Rock, 2 - Paper, 3 - Scissors")
                 user = int(input("Your choice: ")) 
                 get_winner(user)
+                rounds += 1
                 print("Continue playing? (y/n)")
                 user2 = input().lower()
                 if user2 == 'y':
                     continue
                 else:
                     print("Going back to the main menu....\n")
-                    time.sleep(2)  # Takes a 2 second pause before going back to main menu
+                    time.sleep(2)
                     print("------------------------------------------")
                     break
         elif choice == 3:
+            print("Number of rounds played: ", rounds)
             print("Your Current Score: ", user_score)
             print("Computer Current Score: ", comp_score)
             if user_score == comp_score:
@@ -88,7 +88,8 @@ def play_game():
         elif choice == 4:
             print("Farewell, Player! We are now exiting the game......^^") 
             exit()
-        time.sleep(5) # Gives the user a 5 second break before moving on to the next iteration
+        print("Please wait a moment......")
+        time.sleep(3) # Gives the user a 3 second break before moving on to the next iteration
 
     
 # Function to print 
