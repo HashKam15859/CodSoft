@@ -2,6 +2,7 @@ checker = '' # Initializing a global variable to check when to exit the loop
 
 # Function to perform the functions of a calculator
 def calculator(): 
+    global checker
     print("\n\nChoose which operation is to be performed: ")
     print("1. Addition \n2. Subtraction \n3. Multiplication \n4. Division \n5. Integer Division \n6. Modular Division (for Remainder)")
     print("7. Press e to Exit....")
